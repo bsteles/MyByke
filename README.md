@@ -1,2 +1,2 @@
 # MyByke
-Aplicação web móvel para a disciplina de Programação Móvel. 
+Aplicação web móvel utilizando JSF com Primefaces para a disciplina de Programação Móvel. 
