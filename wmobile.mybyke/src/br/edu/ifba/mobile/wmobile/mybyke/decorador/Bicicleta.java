@@ -1,11 +1,14 @@
 package br.edu.ifba.mobile.wmobile.mybyke.decorador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bicicleta implements Bike {
 
 	private double valor;
 	private String produto;
 
-	Bicicleta() {
+	public Bicicleta() {
 		this.valor = 0;
 		this.produto = "Bicicleta";
 	}
@@ -16,19 +19,12 @@ public class Bicicleta implements Bike {
 	}
 
 	@Override
-	public String getProduto() {
-		return this.produto;
+	public List<String> getProduto() {
+		List<String> produtos = new ArrayList<String>();
+		produtos.add(produto);
+		return produtos;
 	}
 
-	@Override
-	public void setProduto(String produto) {
-		this.produto = produto;
-	}
 
-	@Override
-	public void setValor(double valor) {
-		this.valor = valor;
-
-	}
 
 }

@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+
+<h:head>
+	<script type="text/javascript"></script>
+</h:head>
+
+<h:body>
+	<pm:page title="Montagem">
+		<pm:header title="Montagem" />
+
+		<h:form id="form">
+
+			<p:accordionPanel>
+			
+				<p:tab title="#{mb.getNomePeca(1)}">
+					<form>
+						<p:outputPanel style="margin-bottom:10px">
+							<p:selectOneRadio id="customRadio1" value="#{mb.quadro}"
+								layout="custom">
+								<f:selectItem itemLabel="#{MyBike.getNomeQuadro(1)}" itemValue="#{MyByke.nomeQuadro(1)}"/>	
+								<f:selectItem itemLabel="#{MyBike.nomeQuadro(2)}" itemValue="#{MyBike.nomeQuadro(2)}"/>								
+								<f:selectItem itemLabel="#{MyBike.nomeQuadro(3)}" itemValue="#{MyBike.nomeQuadro(3)}"/>	
+							</p:selectOneRadio>
+						</p:outputPanel>
+					</form>
+				</p:tab>
+
+				<p:tab title="#{mb.getNomePeca(2)}">
+					<form>
+						<p:outputPanel  style="margin-bottom:10px">
+							<p:selectOneRadio id="customRadio2" value="#{mb.quadro}"
+								layout="custom">								
+								<f:selectItem itemLabel="#{MyBike.nomeGarfo(1)}" itemValue="#{MyBike.nomeGarfo(1)}"/>	
+								<f:selectItem itemLabel="#{MyBike.nomeGarfo(2)}" itemValue="#{MyBike.nomeGarfo(2)}"/>								
+								<f:selectItem itemLabel="#{MyBike.nomeGarfo(3)}" itemValue="#{MyBike.nomeGarfo(3)}"/>	
+							
+							</p:selectOneRadio>
+
+						</p:outputPanel>
+					</form>
+				</p:tab>
+				
+				<p:tab title="#{mb.getNomePeca(3)}">
+					<form>
+						<p:outputPanel style="margin-bottom:10px">
+							<p:selectOneRadio id="customRadio3" value="#{mb.quadro}"
+								layout="custom">
+								
+								<f:selectItem itemLabel="#{MyBike.nomeFreio(1)}" itemValue="#{MyBike.nomeFreio(1)}"/>	
+								<f:selectItem itemLabel="#{MyBike.nomeFreio(2)}" itemValue="#{MyBike.nomeFreio(2)}"/>								
+								<f:selectItem itemLabel="#{MyBike.nomeFreio(3)}" itemValue="#{MyBike.nomeFreio(3)}"/>	
+							
+							</p:selectOneRadio>
+						</p:outputPanel>
+					</form>
+				</p:tab>
+				
+				<p:tab title="#{mb.getNomePeca(4)}">
+					<form>
+						<p:outputPanel  style="margin-bottom:10px">
+							<p:selectOneRadio id="customRadio4" value="#{mb.quadro}"
+								layout="custom">
+								
+								<f:selectItem itemLabel="#{MyBike.nomeMarcha(1)}" itemValue="#{MyBike.nomeMarcha(1)}"/>	
+								<f:selectItem itemLabel="#{MyBike.nomeMarcha(2)}" itemValue="#{MyBike.nomeMarcha(2)}"/>								
+								<f:selectItem itemLabel="#{MyBike.nomeMarcha(3)}" itemValue="#{MyBike.nomeMarcha(3)}"/>	
+							
+							</p:selectOneRadio>
+						</p:outputPanel>
+					</form>
+				</p:tab>
+				
+				<p:tab title="#{mb.getNomePeca(5)}">
+					<form>
+						<p:outputPanel  style="margin-bottom:10px">
+							<p:selectOneRadio id="customRadio5" value="#{mb.quadro}"
+								layout="custom">
+								
+								<f:selectItem itemLabel="#{MyBike.nomePneu(1)}" itemValue="#{MyBike.nomePneu(1)}"/>	
+								<f:selectItem itemLabel="#{MyBike.nomePneu(2)}" itemValue="#{MyBike.nomePneu(2)}"/>								
+								<f:selectItem itemLabel="#{MyBike.nomePneu(3)}" itemValue="#{MyBike.nomePneu(3)}"/>	
+							
+							</p:selectOneRadio>
+						</p:outputPanel>
+					</form>
+				</p:tab>
+
+
+			</p:accordionPanel>
+			<p:button outcome="pagamento" value="Montar" />
+		</h:form>
+
+	</pm:page>
+
+</h:body>
+
+</html>
