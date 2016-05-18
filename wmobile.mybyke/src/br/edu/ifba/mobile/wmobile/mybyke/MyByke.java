@@ -5,204 +5,144 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.swing.JOptionPane;
 
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.*;
 
 @ManagedBean(name = "mb")
 @SessionScoped
 public class MyByke {
 
-	private static List<String> pecas = new ArrayList<>();
+	private Bike bike;
+	private String quadro = "";
+	private String garfo = "";
+	private String marcha = "";
+	private String freio = "";
+	private String pneu = "";
 
-	private static List<InQuadro> mQuadro = new ArrayList<>();
-	private static List<InGarfo> mGarfo = new ArrayList<>();
-	private static List<InFreio> mFreio = new ArrayList<>();
-	private static List<InMarcha> mMarcha = new ArrayList<>();
-	private static List<InPneu> mPneu = new ArrayList<>();
-	
-	private InQuadro quadro;
-	/*private InGarfo garfo;
-	private InFreio freio;
-	private InMarcha marcha;
-	private InPneu pneu;*/
-	
-	
-
-	static {
-
-		pecas.add("Quadro");
-		pecas.add("Garfo");
-		pecas.add("Freio");
-		pecas.add("Marcha");
-		pecas.add("Pneu");
-
-		mQuadro.add(new InQuadro("Mosso", 1200));
-		mQuadro.add(new InQuadro("Caloi",500));
-		mQuadro.add(new InQuadro("Proshock",1000));
-
-		mGarfo.add(new InGarfo("Kodi",800));
-		mGarfo.add(new InGarfo("Caloi",600));
-		mGarfo.add(new InGarfo("ProTork",1200));
-
-		mFreio.add(new InFreio("Shimano",500));
-		mFreio.add(new InFreio("Caloi",250));
-		mFreio.add(new InFreio("GTS",400));
-
-		mMarcha.add(new InMarcha("Shimano",500));
-		mMarcha.add(new InMarcha("Caloi",200));
-		mMarcha.add(new InMarcha("Yamada",350));
-
-		mPneu.add(new InPneu("Pirelli",100));
-		mPneu.add(new InPneu("CST ",70));
-		mPneu.add(new InPneu("Maxxis",80));
-		
+	public List<String> getListaProdutos() {
+		List<String> tipos = new ArrayList<String>();
+		tipos.add("Quadro");
+		tipos.add("Garfo");
+		tipos.add("Marcha");
+		tipos.add("Freio");
+		tipos.add("Pneu");
+		return tipos;
 	}
 
-	public InQuadro getQuadro() {
+	public List<String> getMarcasQuadro() {
+		List<String> tipos = new ArrayList<String>();
+		tipos.add("Mosso");
+		tipos.add("Proshock");
+		return tipos;
+	}
+
+	public List<String> getMarcasGarfo() {
+		List<String> tipos = new ArrayList<String>();
+		tipos.add("Kodi");
+		tipos.add("Protork");
+
+		return tipos;
+	}
+
+	public List<String> getMarcasMarcha() {
+		List<String> tipos = new ArrayList<String>();
+		tipos.add("Yamada");
+		tipos.add("Shimano");
+		return tipos;
+	}
+
+	public List<String> getMarcasFreio() {
+		List<String> tipos = new ArrayList<String>();
+		tipos.add("GTS");
+		tipos.add("Shimano");
+		return tipos;
+	}
+
+	public List<String> getMarcasPneu() {
+		List<String> tipos = new ArrayList<String>();
+		tipos.add("Maxxis");
+		tipos.add("Pirelli");
+		return tipos;
+	}
+
+	public void marcaQuadro(String marca) {
+		if (marca.equals("Mosso"))
+			bike = new QuadroMosso(bike);
+		else if (marca.equals("Proshok"))
+			bike = new QuadroProshock(bike);
+	}
+
+	public void marcaGarfo(String marca) {
+		if (marca.equals("Kodi"))
+			bike = new GarfoKodi(bike);
+		else if (marca.equals("Protork"))
+			bike = new GarfoProtork(bike);
+	}
+
+	public void marcaMarcha(String marca) {
+		if (marca.equals("Yamada"))
+			bike = new KitDeMarchasYamada(bike);
+		else if (marca.equals("Shimano"))
+			bike = new KitMarchasShimano(bike);
+	}
+
+	public void marcaFreio(String marca) {
+		if (marca.equals("GTS"))
+			bike = new JogoDeFreioGTS(bike);
+		else if (marca.equals("Shimano"))
+			bike = new JogoDeFreioShimano(bike);
+	}
+
+	public void marcaPneu(String marca) {
+		if (marca.equals("Maxxis"))
+			bike = new PneusMaxxis(bike);
+		else if (marca.equals("Pirelli"))
+			bike = new PneusPirelli(bike);
+	}
+
+	public String getMontador() {
+		marcaQuadro(quadro);
+		marcaGarfo(garfo);
+		marcaMarcha(marcha);
+		marcaFreio(freio);
+		marcaPneu(pneu);
+		return "";
+	}
+
+	public void setQuadroEscolhido(String quadro) {
+		this.quadro = quadro;
+		JOptionPane.showMessageDialog(null, "Quadro " + quadro + " selecionado.");
+
+	}
+
+	public int getTotalListaProdutos() {
+		return getListaProdutos().size();
+	}
+
+	public String getQuadro() {
 		return quadro;
 	}
 
-	public void setQuadro(InQuadro quadro) {
-		this.quadro = quadro;
-	}
-
-	public int getTotalPecas() {
-		return pecas.size();
-	}
-
-	public String getNomePeca(int numero) {		
-		return pecas.get(numero - 1);
-	}
-
-	public int getTotalQuadro() {
-		return mQuadro.size();
-	}
-	public String getNomeQuadro(int numero) {		
-		return mQuadro.get(numero - 1).getNome();
-		
-	}
-
-	public int getTotalGarfo() {
-		return mGarfo.size();
-	}
-	public String getNomeGarfo(int numero) {
-		return mGarfo.get(numero - 1).getNome();
-	}
-
-	public int getTotalFreio() {
-		return mFreio.size();
-	}
-	public String getNomeFreio(int numero) {
-		return mFreio.get(numero - 1).getNome();
-	}
-
-	public int getTotalMarcha() {
-		return mMarcha.size();
-	}
-	public String getNomeMarcha(int numero) {
-		return mMarcha.get(numero - 1).getNome();
-	}
-
-	public int getTotalPneu() {
-		return mPneu.size();
-	}
-	public String getNomePneu(int numero) {
-		return mPneu.get(numero - 1).getNome();
-	}
-
-	public static class InQuadro{
-		public String nome;
-		public double valor;
-		
-		public InQuadro(String nome, double valor){
-			this.nome=nome;
-			this.valor=valor;
-		}
-		public String getNome() {
-			return nome;
-		}
-		
-		public double getValor() {
-			return valor;
-		}
-		
-	}
-	public static class InGarfo{
-		public String nome;
-		public double valor;
-		
-		public InGarfo(String nome, double valor){
-			this.nome=nome;
-			this.valor=valor;
-		}
-		public String getNome() {
-			return nome;
-		}
-		
-		public double getValor() {
-			return valor;
-		}
-		
-	}
-	public static class InFreio{
-		public String nome;
-		public double valor;
-		
-		public InFreio(String nome, double valor){
-			this.nome=nome;
-			this.valor=valor;
-		}
-		public String getNome() {
-			return nome;
-		}
-		
-		public double getValor() {
-			return valor;
-		}
-		
-	}
-	public static class InPneu{
-		public String nome;
-		public double valor;
-		
-		public InPneu(String nome, double valor){
-			this.nome=nome;
-			this.valor=valor;
-		}
-		public String getNome() {
-			return nome;
-		}
-		
-		public double getValor() {
-			return valor;
-		}
-		
-	}
-	public static class InMarcha{
-		public String nome;
-		public double valor;
-		
-		public InMarcha(String nome, double valor){
-			this.nome=nome;
-			this.valor=valor;
-		}
-		public String getNome() {
-			return nome;
-		}
-		
-		public double getValor() {
-			return valor;
-		}
-		
-	}
-	
-	public String getDelay() throws InterruptedException {
-		Thread.sleep(3000);
-		return "";
+	public void setGarfo(String garfo) {
+		this.garfo = garfo;
+		JOptionPane.showMessageDialog(null, "Garfo " + garfo + " selecionado.");
 
 	}
 
-	/*
-	 * private String quadro; private String marcha; private String garfo;
-	 * private String pneu; private String freio;
-	 */
+	public void setMarcha(String marcha) {
+		this.marcha = marcha;
+		JOptionPane.showMessageDialog(null, "Marcha " + marcha + " selecionado.");
+	}
+
+	public void setFreio(String freio) {
+		this.freio = freio;
+		JOptionPane.showMessageDialog(null, "Freio " + freio + " selecionado.");
+	}
+
+	public void setPneu(String pneu) {
+		this.pneu = pneu;
+		JOptionPane.showMessageDialog(null, "Pneu " + pneu + " selecionado.");
+	}
+
 }

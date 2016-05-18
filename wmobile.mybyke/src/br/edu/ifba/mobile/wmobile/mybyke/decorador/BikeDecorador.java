@@ -9,9 +9,8 @@ public abstract class BikeDecorador implements Bike {
 	protected double valor;
 	protected Bike bikeDecorada;
 
-	public BikeDecorador(Bike bikeDecorada, String produto, double valor) {
-		this.produto=produto;
-		this.valor=valor;
+	public BikeDecorador(Bike bikeDecorada) {
+		
 		this.bikeDecorada = bikeDecorada;
 	}
 
