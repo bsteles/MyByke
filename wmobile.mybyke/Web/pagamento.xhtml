@@ -25,13 +25,13 @@
 							<h:outputText value="#{bikeP}" />
 						</p:column>
 					</p:dataList>
-<p/>
-<p/>
-<p/>
+					<p />
+					<p />
+					<p />
 					<div>
-					
 						<h:outputText value="Valor Total: #{mb.valorTotal}" />
-						<h:button value="Pagar" outcome="pagamento.xhtml" />
+						<p:button value="Pagar" outcome="inicio.xhtml"
+							actionListener="#{mb.pagamento()}" />
 						<h:button value="Editar" outcome="montagem.xhtml" />
 					</div>
 

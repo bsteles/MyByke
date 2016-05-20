@@ -20,7 +20,7 @@ import br.edu.ifba.mobile.wmobile.mybyke.decorador.Quadro;
 @SessionScoped
 public class MyByke {
 
-	private List<Bike> lBike = new ArrayList<>();
+	//private List<Bike> lBike = new ArrayList<>();
 	private Bike bike = new Bicicleta();
 	private String quadro = "";
 	private String garfo = "";
@@ -77,56 +77,57 @@ public class MyByke {
 	public void marcaQuadro(String marca) {
 		
 		if (marca.equals("Mosso")) 
-			bike = new Quadro(bike, "Mosso", 900);
+			bike = new Quadro(bike, "Quadro Mosso", 900);
 		 else  if (marca.equals("Proshok"))
-			bike = new Quadro(bike, "Proshok", 1200);
+			bike = new Quadro(bike, "Quadro Proshok", 1200);
 
 	}
 
 	public void marcaGarfo(String marca) {
 		if (marca.equals("Kodi"))
-			bike = new Garfo(bike, "Kodi", 700);
+			bike = new Garfo(bike, "Garfo Kodi", 700);
 		else  if (marca.equals("Protork"))
-			bike = new Garfo(bike, "Protork", 500);
+			bike = new Garfo(bike, "Garfo Protork", 500);
 
 	}
 
 	public void marcaMarcha(String marca) {
 		if (marca.equals("Yamada"))
-			bike = new KitDeMarchas(bike, "Yamada", 95);
+			bike = new KitDeMarchas(bike, "Marcha Yamada", 95);
 		else if (marca.equals("Shimano"))
-			bike = new KitDeMarchas(bike, "Shimano", 150);
+			bike = new KitDeMarchas(bike, "Marcha Shimano", 150);
 
 	}
 
 	public void marcaFreio(String marca) {
 		if (marca.equals("GTS"))
-			bike = new JogoDeFreio(bike, "GTS", 200);
+			bike = new JogoDeFreio(bike, "Freio GTS", 200);
 		else if (marca.equals("Shimano"))
-			bike = new JogoDeFreio(bike, "Shimano", 200);
+			bike = new JogoDeFreio(bike, "Freio Shimano", 200);
 
 	}
 
 	public void marcaPneu(String marca) {
 		if (marca.equals("Maxxis"))
-			bike = new Pneus(bike, "Maxxis", 60);
+			bike = new Pneus(bike, "Pneu Maxxis", 60);
 		else if (marca.equals("Pirelli"))
-			bike = new Pneus(bike, "Pirelli", 100);
+			bike = new Pneus(bike, "Pneu Pirelli", 100);
 
 	}
 
 	public void getMontador() {
 
 		marcaQuadro(quadro);
-		lBike.add(bike);
+		//lBike.add(bike);
 		marcaGarfo(garfo);
-		lBike.add(bike);
+		//lBike.add(bike);
 		marcaMarcha(marcha);
-		lBike.add(bike);
+		//lBike.add(bike);
 		marcaFreio(freio);
-		lBike.add(bike);
+		//lBike.add(bike);
 		marcaPneu(pneu);
-		lBike.add(bike);
+		//lBike.add(bike);
+		System.out.println(bike.getProdutos()+"R$ "+bike.getValores()+" total:"+bike.getValor());
 
 	}
 
@@ -137,14 +138,14 @@ public class MyByke {
 		return bike.getProdutos();
 	}
 	
-	public List<Double> getBikeValores() {
+	/*public List<Double> getBikeValores() {
 		if (bike.getValores().size() > 0)
 			bike = new Bicicleta();
 		//this.getMontador();
 		return bike.getValores();
 	}
 	
-	/*public Bike getBike(){
+	public Bike getBike(){
 		return bike;
 	}*/
 	
@@ -172,7 +173,8 @@ public class MyByke {
 		this.pneu = pneu;
 	}
 	
-	public void setPagamento(){
+	public void pagamento(){
+		System.out.println("pagamento");
 		setFreio("");
 		setGarfo("");
 		setMarcha("");
