@@ -6,11 +6,11 @@ import java.util.List;
 public class Bicicleta implements Bike {
 
 	private double valor;
-	private String produto;
+	//private String produto;
 
 	public Bicicleta() {
 		this.valor = 0;
-		this.produto = "Bicicleta";
+		//this.produto = "Bicicleta personalizada";
 	}
 
 	@Override
@@ -19,12 +19,11 @@ public class Bicicleta implements Bike {
 	}
 
 	@Override
-	public List<String> getProduto() {
+	public List<String> getProdutos() {
 		List<String> produtos = new ArrayList<String>();
-		produtos.add(produto);
+		//produtos.add(produto);
 		return produtos;
 	}
-
 
 
 }

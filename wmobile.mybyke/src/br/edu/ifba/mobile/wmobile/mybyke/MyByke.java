@@ -3,17 +3,26 @@ package br.edu.ifba.mobile.wmobile.mybyke;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import javax.swing.JOptionPane;
 
-import br.edu.ifba.mobile.wmobile.mybyke.decorador.*;
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.Bicicleta;
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.Bike;
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.Garfo;
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.JogoDeFreio;
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.KitDeMarchas;
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.Pneus;
+import br.edu.ifba.mobile.wmobile.mybyke.decorador.Quadro;
 
 @ManagedBean(name = "mb")
 @SessionScoped
 public class MyByke {
 
-	private Bike bike;
+	private List<Bike> lBike = new ArrayList<>();
+	private Bike bike = new Bicicleta();
 	private String quadro = "";
 	private String garfo = "";
 	private String marcha = "";
@@ -67,82 +76,88 @@ public class MyByke {
 	}
 
 	public void marcaQuadro(String marca) {
-		if (marca.equals("Mosso"))
-			bike = new QuadroMosso(bike);
-		else if (marca.equals("Proshok"))
-			bike = new QuadroProshock(bike);
+		
+		if (marca.equals("Mosso")) 
+			bike = new Quadro(bike, "Mosso", 900);
+		 else  if (marca.equals("Proshok"))
+			bike = new Quadro(bike, "Proshok", 1200);
+
 	}
 
 	public void marcaGarfo(String marca) {
 		if (marca.equals("Kodi"))
-			bike = new GarfoKodi(bike);
-		else if (marca.equals("Protork"))
-			bike = new GarfoProtork(bike);
+			bike = new Garfo(bike, "Kodi", 700);
+		else  if (marca.equals("Protork"))
+			bike = new Garfo(bike, "Protork", 500);
+
 	}
 
 	public void marcaMarcha(String marca) {
 		if (marca.equals("Yamada"))
-			bike = new KitDeMarchasYamada(bike);
+			bike = new KitDeMarchas(bike, "Yamada", 95);
 		else if (marca.equals("Shimano"))
-			bike = new KitMarchasShimano(bike);
+			bike = new KitDeMarchas(bike, "Shimano", 150);
+
 	}
 
 	public void marcaFreio(String marca) {
 		if (marca.equals("GTS"))
-			bike = new JogoDeFreioGTS(bike);
+			bike = new JogoDeFreio(bike, "GTS", 200);
 		else if (marca.equals("Shimano"))
-			bike = new JogoDeFreioShimano(bike);
+			bike = new JogoDeFreio(bike, "Shimano", 200);
+
 	}
 
 	public void marcaPneu(String marca) {
 		if (marca.equals("Maxxis"))
-			bike = new PneusMaxxis(bike);
+			bike = new Pneus(bike, "Maxxis", 60);
 		else if (marca.equals("Pirelli"))
-			bike = new PneusPirelli(bike);
+			bike = new Pneus(bike, "Pirelli", 100);
+
 	}
 
-	public String getMontador() {
+	public void getMontador() {
+
 		marcaQuadro(quadro);
+		lBike.add(bike);
 		marcaGarfo(garfo);
+		lBike.add(bike);
 		marcaMarcha(marcha);
+		lBike.add(bike);
 		marcaFreio(freio);
+		lBike.add(bike);
 		marcaPneu(pneu);
-		return "";
-	}
-
-	public void setQuadroEscolhido(String quadro) {
-		this.quadro = quadro;
-		JOptionPane.showMessageDialog(null, "Quadro " + quadro + " selecionado.");
+		lBike.add(bike);
 
 	}
 
-	public int getTotalListaProdutos() {
-		return getListaProdutos().size();
+	public List<String> getBike() {
+		if (bike.getProdutos().size() > 0)
+			bike = new Bicicleta();
+		this.getMontador();
+		return bike.getProdutos();
 	}
 
-	public String getQuadro() {
-		return quadro;
+	public void setQuadro(String quadro) {
+		this.quadro = quadro;		
 	}
 
 	public void setGarfo(String garfo) {
 		this.garfo = garfo;
-		JOptionPane.showMessageDialog(null, "Garfo " + garfo + " selecionado.");
-
 	}
 
 	public void setMarcha(String marcha) {
 		this.marcha = marcha;
-		JOptionPane.showMessageDialog(null, "Marcha " + marcha + " selecionado.");
 	}
 
 	public void setFreio(String freio) {
 		this.freio = freio;
-		JOptionPane.showMessageDialog(null, "Freio " + freio + " selecionado.");
 	}
 
 	public void setPneu(String pneu) {
 		this.pneu = pneu;
-		JOptionPane.showMessageDialog(null, "Pneu " + pneu + " selecionado.");
 	}
+
+	
 
 }

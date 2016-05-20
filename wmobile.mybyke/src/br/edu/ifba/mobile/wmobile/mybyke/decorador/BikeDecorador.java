@@ -1,3 +1,4 @@
+
 package br.edu.ifba.mobile.wmobile.mybyke.decorador;
 
 
@@ -9,9 +10,11 @@ public abstract class BikeDecorador implements Bike {
 	protected double valor;
 	protected Bike bikeDecorada;
 
-	public BikeDecorador(Bike bikeDecorada) {
+	public BikeDecorador(Bike bikeDecorada, String produto, double valor) {
 		
 		this.bikeDecorada = bikeDecorada;
+		this.produto=produto;
+		this.valor=valor;
 	}
 
 	@Override
@@ -20,8 +23,8 @@ public abstract class BikeDecorador implements Bike {
 	}
 
 	@Override
-	public List<String> getProduto() {
-		List<String> produtos = bikeDecorada.getProduto();
+	public List<String> getProdutos() {
+		List<String> produtos = bikeDecorada.getProdutos();
 		produtos.add(this.produto);
 		 
 		return produtos;

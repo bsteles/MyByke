@@ -9,32 +9,83 @@
 <f:view renderKitId="PRIMEFACES_MOBILE" />
 
 <h:head>
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+		
+	</script>
 </h:head>
 
 <h:body>
 	<pm:page id="Montagem">
 		<pm:header title="Montagem" />
 		<h:form id="form">
-			<p:accordionPanel>				
-					<p:tab title="#{mb.listaProdutos.get(0)}">
-						<pm:content>
-							<form>
-								<p:outputPanel style="margin-bottom:10px">
-									<p:dataList id="pMarcas" value="#{mb.marcasQuadro}" var="a">
-										<p:commandLink value="#{a}">
-											<f:setPropertyActionListener target="#{mb.quadroEscolhido}" 
-												value="#{a}">
-											</f:setPropertyActionListener>
-										</p:commandLink>
-									</p:dataList>
-								</p:outputPanel>
-							</form>
-						</pm:content>
-					</p:tab>					
+			<p:accordionPanel>
+				<p:tab title="#{mb.listaProdutos.get(0)}">
+					<pm:content>
+						<p:outputPanel style="margin-bottom:10px">
+							<p:dataList id="pMarcas" value="#{mb.marcasQuadro}" var="a">								
+								<p:commandLink value="#{a}"  >
+									<f:setPropertyActionListener target="#{mb.quadro}" value="#{a}">
+									</f:setPropertyActionListener>
+								</p:commandLink>
+							</p:dataList>
+						</p:outputPanel>
+
+					</pm:content>
+				</p:tab>
+				<p:tab title="#{mb.listaProdutos.get(1)}">
+					<pm:content>
+						<p:outputPanel style="margin-bottom:10px">
+							<p:dataList id="pMarcas1" value="#{mb.marcasGarfo}" var="a">								
+								<p:commandLink value="#{a}" >
+									<f:setPropertyActionListener target="#{mb.garfo}" value="#{a}">
+									</f:setPropertyActionListener>
+								</p:commandLink>
+							</p:dataList>
+						</p:outputPanel>
+
+					</pm:content>
+				</p:tab>
+				<p:tab title="#{mb.listaProdutos.get(2)}">
+					<pm:content>
+						<p:outputPanel style="margin-bottom:10px">
+							<p:dataList id="pMarcas2" value="#{mb.marcasMarcha}" var="a">								
+								<p:commandLink value="#{a}" >
+									<f:setPropertyActionListener target="#{mb.marcha}" value="#{a}">
+									</f:setPropertyActionListener>
+								</p:commandLink>
+							</p:dataList>
+						</p:outputPanel>
+
+					</pm:content>
+				</p:tab>
+				<p:tab title="#{mb.listaProdutos.get(3)}">
+					<pm:content>
+						<p:outputPanel style="margin-bottom:10px">
+							<p:dataList id="pMarcas3" value="#{mb.marcasFreio}" var="a">								
+								<p:commandLink value="#{a}" >
+									<f:setPropertyActionListener target="#{mb.freio}" value="#{a}">
+									</f:setPropertyActionListener>
+								</p:commandLink>
+							</p:dataList>
+						</p:outputPanel>
+
+					</pm:content>
+				</p:tab>
+				<p:tab title="#{mb.listaProdutos.get(4)}">
+					<pm:content>
+						<p:outputPanel style="margin-bottom:10px">
+							<p:dataList id="pMarcas4" value="#{mb.marcasPneu}" var="a">								
+								<p:commandLink value="#{a}" >
+									<f:setPropertyActionListener target="#{mb.pneu}" value="#{a}">
+									</f:setPropertyActionListener>
+								</p:commandLink>
+							</p:dataList>
+						</p:outputPanel>
+
+					</pm:content>
+				</p:tab>
 			</p:accordionPanel>
-			<h:button value="salvar" action="#{mb.montador}"
-				outcome="pagamento.xhtml" />
+			<h:button value="Montar" outcome="pagamento.xhtml" />
 		</h:form>
 
 	</pm:page>

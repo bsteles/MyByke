@@ -6,7 +6,7 @@ public interface Bike {
 	
 	public double getValor();	
 	
-	public List<String> getProduto();
-
+	public List<String> getProdutos();
 	
+
 }

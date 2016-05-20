@@ -17,8 +17,16 @@
 
 		<pm:content>
 			<h:form id="frmDuvida">
-				<h:outputText id="resultadoCadeia" value="#{mb.quadro}" />
-				
+
+				<div align="center">
+					<p:dataTable var="bike" value="#{mb.bike}">
+						<p:column headerText="Peças">
+							<h:outputText value="#{bike}" />
+						</p:column>					
+						
+					</p:dataTable>
+					
+				</div>
 
 			</h:form>
 		</pm:content>
