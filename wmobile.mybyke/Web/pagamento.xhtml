@@ -14,20 +14,28 @@
 
 <h:body>
 	<pm:page id="resultado">
-
+		<pm:header title="Pagamento" />
 		<pm:content>
 			<h:form id="frmDuvida">
 
 				<div align="center">
-					<p:dataTable var="bike" value="#{mb.bike}">
-						<p:column headerText="Peças">
-							<h:outputText value="#{bike}" />
-						</p:column>					
-						
-					</p:dataTable>
-					
-				</div>
 
+					<p:dataList var="bikeP" value="#{mb.bikePecas}" type="ordered">
+						<p:column headerText="Peças">
+							<h:outputText value="#{bikeP}" />
+						</p:column>
+					</p:dataList>
+<p/>
+<p/>
+<p/>
+					<div>
+					
+						<h:outputText value="Valor Total: #{mb.valorTotal}" />
+						<h:button value="Pagar" outcome="pagamento.xhtml" />
+						<h:button value="Editar" outcome="montagem.xhtml" />
+					</div>
+
+				</div>
 			</h:form>
 		</pm:content>
 

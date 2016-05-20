@@ -7,7 +7,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import javax.swing.JOptionPane;
 
 import br.edu.ifba.mobile.wmobile.mybyke.decorador.Bicicleta;
 import br.edu.ifba.mobile.wmobile.mybyke.decorador.Bike;
@@ -131,11 +130,26 @@ public class MyByke {
 
 	}
 
-	public List<String> getBike() {
+	public List<String> getBikePecas() {
 		if (bike.getProdutos().size() > 0)
 			bike = new Bicicleta();
 		this.getMontador();
 		return bike.getProdutos();
+	}
+	
+	public List<Double> getBikeValores() {
+		if (bike.getValores().size() > 0)
+			bike = new Bicicleta();
+		//this.getMontador();
+		return bike.getValores();
+	}
+	
+	/*public Bike getBike(){
+		return bike;
+	}*/
+	
+	public double getValorTotal(){
+		return bike.getValor();
 	}
 
 	public void setQuadro(String quadro) {
@@ -156,6 +170,14 @@ public class MyByke {
 
 	public void setPneu(String pneu) {
 		this.pneu = pneu;
+	}
+	
+	public void setPagamento(){
+		setFreio("");
+		setGarfo("");
+		setMarcha("");
+		setPneu("");
+		setQuadro("");		
 	}
 
 	

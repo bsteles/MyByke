@@ -27,7 +27,13 @@ public abstract class BikeDecorador implements Bike {
 		List<String> produtos = bikeDecorada.getProdutos();
 		produtos.add(this.produto);
 		 
-		return produtos;
+		return produtos;		
+	}
+	public List<Double> getValores() {
+		List<Double> valores = bikeDecorada.getValores();
+		valores.add(this.valor);
+		 
+		return valores;
 		
 	}
 

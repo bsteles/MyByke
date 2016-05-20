@@ -25,5 +25,12 @@ public class Bicicleta implements Bike {
 		return produtos;
 	}
 
+	@Override
+	public List<Double> getValores() {
+		List<Double> valores = new ArrayList<Double>();
+		// TODO Auto-generated method stub
+		return valores;
+	}
+
 
 }
